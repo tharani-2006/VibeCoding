@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { apiClient } from './services/apiClient';
 
 function App() {
   const [file, setFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const [result, setResult] = useState<{
     text: string;
     audio_url: string;
@@ -18,12 +20,8 @@ function App() {
     formData.append('file', file);
 
     try {
-      const response = await fetch('http://localhost:8000/upload', {
-        method: 'POST',
-        body: formData,
-      });
-      
-      const data = await response.json();
+const response = await apiClient.post('/upload', formData);
+      const data = response.data;
       setResult(data);
     } catch (error) {
       console.error('Upload failed:', error);
@@ -38,19 +36,35 @@ function App() {
         <h1 className="text-3xl font-bold text-center mb-8">ImageTalk</h1>
         
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-400 transition-colors">
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => setFile(e.target.files?.[0] || null)}
-              className="hidden"
-              id="file-upload"
-            />
-            <label htmlFor="file-upload" className="cursor-pointer">
-              <p className="text-gray-600">Click to upload</p>
-              <p className="text-sm text-gray-500 mt-1">PNG, JPG up to 5MB</p>
-            </label>
-          </div>
+<div
+  className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
+    isDragging ? 'border-blue-500 bg-blue-50' : 'border-gray-300 hover:border-blue-400'
+  }`}
+  onDragOver={(e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  }}
+  onDragLeave={() => setIsDragging(false)}
+  onDrop={(e) => {
+    e.preventDefault();
+    setIsDragging(false);
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      setFile(e.dataTransfer.files[0]);
+    }
+  }}
+>
+  <input
+    type="file"
+    accept="image/*"
+    onChange={(e) => setFile(e.target.files?.[0] || null)}
+    className="hidden"
+    id="file-upload"
+  />
+  <label htmlFor="file-upload" className="cursor-pointer">
+    <p className="text-gray-600">Click to upload or drag & drop</p>
+    <p className="text-sm text-gray-500 mt-1">PNG, JPG up to 5MB</p>
+  </label>
+</div>
 
           <button
             type="submit"
