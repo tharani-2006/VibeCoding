@@ -16,8 +16,8 @@ class Settings(BaseSettings):
     CLOUDINARY_API_KEY: str = ""
     CLOUDINARY_API_SECRET: str = ""
 
-    # Hugging Face
-    HF_API_TOKEN: str = ""
-
+    # HuggingFace
+    HUGGINGFACE_API_KEY: str = ""
+    HUGGINGFACE_IMAGE_TO_TEXT_MODEL: str = "HuggingFaceM4/comparison"
 
 settings = Settings()

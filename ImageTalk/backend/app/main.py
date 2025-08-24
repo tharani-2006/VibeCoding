@@ -3,6 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .db import init_db
 from .routers.health import router as health_router
+from .routers.upload import router as upload_router
+from .services.cloudinary_service import init_cloudinary
 
 app = FastAPI(title="ImageTalk API", version="0.1.0")
 
@@ -19,6 +21,7 @@ app.add_middleware(
 @app.on_event("startup")
 def on_startup() -> None:
     init_db()
+    init_cloudinary()
 
 
 @app.get("/")
@@ -27,3 +30,4 @@ def read_root() -> dict:
 
 
 app.include_router(health_router, prefix="/api")
+app.include_router(upload_router, prefix="/api")
