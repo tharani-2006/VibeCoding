@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> Page - Violet Palette </title>
+  <style>
+    :root {
+      --russian-violet: #10002bff;
+      --russian-violet-2: #240046ff;
+      --persian-indigo: #3c096cff;
+      --tekhelet: #5a189aff;
+      --french-violet: #7b2cbfff;
+      --amethyst: #9d4eddff;
+      --heliotrope: #c77dffff;
+      --mauve: #e0aaffff;
+
+      --white: #ffffff;
+      --black: #000000;
+      --text-on-dark: #f6f5ff; 
+      --text-on-light: #1b1330; 
+      --card-bg: #ffffff;
+      --shadow: 0 8px 20px rgba(0,0,0,.1);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text-on-light);
+      background: linear-gradient(180deg, var(--mauve), #f7f3ff 40%, #ffffff 100%);
+    }
+
+    /* ===== Header ===== */
+    header.hero {
+      background: linear-gradient(135deg,
+        var(--russian-violet) 0%,
+        var(--persian-indigo) 35%,
+        var(--tekhelet) 65%,
+        var(--amethyst) 100%);
+      color: var(--text-on-dark);
+      padding: 64px 24px;
+      text-align: center;
+    }
+    header.hero h1 { margin: 0 0 8px; font-size: clamp(28px, 5vw, 48px); letter-spacing: 0.5px; }
+    header.hero p { margin: 0; opacity: .9; }
+
+    /* ===== Container ===== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+
+    /* ===== Card ===== */
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      margin: 16px 0;
+    }
+    .card h2 { margin-top: 4px; color: var(--persian-indigo); }
+
+    /* ===== Swatches ===== */
+    .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+    .swatch { border-radius: 14px; overflow: hidden; border: 1px solid #eee; }
+    .swatch-color { height: 84px; }
+    .swatch-info { padding: 10px 12px; font-size: 14px; display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+    .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 12px; opacity: .85; }
+
+    /* ===== Buttons ===== */
+    .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn { border: 0; border-radius: 999px; padding: 12px 18px; font-weight: 600; cursor: pointer; transition: transform .06s ease, box-shadow .2s ease; }
+    .btn:active { transform: translateY(1px); }
+
+    .btn-primary { background: var(--amethyst); color: var(--text-on-dark); box-shadow: 0 6px 16px rgba(157,78,221,.35); }
+    .btn-primary:hover { box-shadow: 0 10px 22px rgba(157,78,221,.45); }
+
+    .btn-dark { background: var(--russian-violet-2); color: var(--text-on-dark); box-shadow: 0 6px 16px rgba(36,0,70,.45); }
+    .btn-dark:hover { box-shadow: 0 10px 22px rgba(36,0,70,.55); }
+
+    .btn-outline { background: transparent; color: var(--tekhelet); border: 2px solid var(--tekhelet); }
+    .btn-outline:hover { background: rgba(90,24,154,.08); }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+
+    .notice {
+      border-left: 6px solid var(--heliotrope);
+      background: #faf6ff;
+      padding: 14px 16px;
+      border-radius: 12px;
+    }
+
+    /* Progress bar using gradient */
+    .progress {
+      height: 12px;
+      background: #efe9ff;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress > span {
+      display: block;
+      height: 100%;
+      width: 62%;
+      background: linear-gradient(90deg, var(--tekhelet), var(--french-violet), var(--heliotrope));
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      margin-top: 28px;
+      background: var(--mauve);
+      color: #3a2b57;
+      padding: 20px 24px;
+      text-align: center;
+      border-top: 2px dashed rgba(16,0,43,.08);
+    }
+    footer a { color: var(--persian-indigo); text-decoration: none; font-weight: 600; }
+
+    /* ===== Utility ===== */
+    .muted { opacity: .75; }
+    .pill { display: inline-block; padding: 6px 10px; border-radius: 999px; background: rgba(199,125,255,.18); color: var(--russian-violet-2); font-weight: 600; }
+
+    .section-dark { background: var(--russian-violet); color: var(--text-on-dark); border-radius: var(--radius); padding: 20px; }
+    .section-mid { background: var(--french-violet); color: var(--text-on-dark); border-radius: var(--radius); padding: 20px; }
+    .section-soft { background: var(--mauve); color: var(--text-on-light); border-radius: var(--radius); padding: 20px; }
+
+    /* Links */
+    a.link { color: var(--tekhelet); text-decoration: none; border-bottom: 2px solid rgba(90,24,154,.25); }
+    a.link:hover { border-color: rgba(90,24,154,.6); }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>Violet Palette — Page</h1>
+    <p>Clean demo using your 8 colors: swatches, UI elements, and gradients.</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Palette Swatches</h2>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch-color" style="background: var(--russian-violet)"></div>
+          <div class="swatch-info"><strong>russian-violet</strong> <span class="code">#10002b</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: var(--russian-violet-2)"></div>
+          <div class="swatch-info"><strong>russian-violet-2</strong> <span class="code">#240046</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: var(--persian-indigo)"></div>
+          <div class="swatch-info"><strong>persian-indigo</strong> <span class="code">#3c096c</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: var(--tekhelet)"></div>
+          <div class="swatch-info"><strong>tekhelet</strong> <span class="code">#5a189a</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: var(--french-violet)"></div>
+          <div class="swatch-info"><strong>french-violet</strong> <span class="code">#7b2cbf</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: var(--amethyst)"></div>
+          <div class="swatch-info"><strong>amethyst</strong> <span class="code">#9d4edd</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: var(--heliotrope)"></div>
+          <div class="swatch-info"><strong>heliotrope</strong> <span class="code">#c77dff</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: var(--mauve)"></div>
+          <div class="swatch-info"><strong>mauve</strong> <span class="code">#e0aaff</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Buttons</h2>
+      <div class="btns">
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-dark">Dark</button>
+        <button class="btn btn-outline">Outline</button>
+        <span class="pill">Tag • heliotrope</span>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h3 style="margin-top:0;color:var(--tekhelet)">Headline Using Tekhelet</h3>
+        <p>These colors work well for dashboards, portfolios, or landing pages. Try <a class="link" href="#">links</a> with a subtle underline accent.</p>
+        <div class="notice">
+          This is a notice box using <strong>heliotrope</strong> for the accent and a very soft background.
+        </div>
+        <div style="margin-top:14px">
+          <div class="progress"><span></span></div>
+          <p class="muted" style="margin:.5rem 0 0">Progress bar: gradient across tekhelet → french-violet → heliotrope</p>
+        </div>
+      </article>
+
+      <article class="card section-dark">
+        <h3 style="margin-top:0">Dark Section (russian-violet)</h3>
+        <p>Use on hero or footer areas. Text is set to a soft light for comfortable contrast.</p>
+        <button class="btn btn-primary">Call to Action</button>
+      </article>
+
+      <article class="card section-mid">
+        <h3 style="margin-top:0">Mid Section (french-violet)</h3>
+        <p>Great for emphasis strips or pricing highlights. Buttons and pills pop nicely here.</p>
+        <button class="btn btn-outline" style="background: rgba(255,255,255,.08); color: #fff; border-color: rgba(255,255,255,.7)">Learn more</button>
+      </article>
+
+      <article class="card section-soft">
+        <h3 style="margin-top:0">Soft Section (mauve)</h3>
+        <p>Use as a gentle panel background for forms or stats.</p>
+        <form class="card" style="background:#fff; color:var(--text-on-light)">
+          <label for="email" style="display:block; font-weight:600; margin-bottom:6px; color: var(--persian-indigo)">Email</label>
+          <input id="email" type="email" placeholder="you@example.com" style="width:100%; padding:12px 14px; border-radius:12px; border:2px solid rgba(123,44,191,.25); outline:none" />
+          <div style="display:flex; gap:10px; margin-top:10px">
+            <button class="btn btn-primary" type="button">Subscribe</button>
+            <button class="btn btn-outline" type="button">Later</button>
+          </div>
+        </form>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    Built with your violet palette · Try swapping roles of <strong>amethyst</strong> and <strong>heliotrope</strong> for different moods.
+  </footer>
+</body>
+</html>
